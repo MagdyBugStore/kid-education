@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Classification</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        .upper-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #f4f4f4;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .lower-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #ffffff;
+            border-top: 2px solid #ccc;
+            padding: 20px;
+            width: 100%;
+        }
+
+        input,
+        button {
+            padding: 1px;
+            margin: 1px;
+            font-size: 13px;
+        }
+
+        .code-container {
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: monospace;
+            text-align: left;
+            width: 80%;
+            overflow-x: auto;
+        }
+
+        .code-container input {
+            width: 30px;
+            /* Set width */
+            height: 30px;
+            /* Set height to match width */
+            text-align: center;
+            /* Center text */
+            font-size: 16px;
+            /* Increase font size */
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            /* Slightly rounded corners */
+            background-color: #333;
+            /* Match dark theme */
+            color: #d4d4d4;
+            /* Light text for contrast */
+        }
+
+        .keyword {
+            color: #569cd6;
+        }
+
+        .string {
+            color: #ce9178;
+        }
+
+        .function {
+            color: #dcdcaa;
+        }
+
+        .variable {
+            color: #9cdcfe;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="upper-section" >Enter a number below
+        <br>
+        <input type="text" id="numberInput" placeholder="Enter a number">
+        <button onclick="classifyNumber()">Classify</button>
+        <div id="result"> </div>
+    </div>
+    <div class="lower-section">
+        <h2>Editable JavaScript Code</h2>
+        <div class="code-container">
+            <span class="keyword">function</span> <span class="function">classifyNumber</span>() {
+            <br>&nbsp;&nbsp;<span class="keyword">let</span> <span class="variable">number</span> =
+            document.getElementById(<span class="string">"numberInput"</span>).value.trim();
+            <br>&nbsp;&nbsp;<span class="keyword">let</span> <span class="variable">numberLen</span> = number.length;
+            <br>&nbsp;&nbsp;<span class="keyword">let</span> <span class="variable">result</span> = <span
+                class="string">""</span>;
+            <br><br>&nbsp;&nbsp;<span class="keyword">if</span> (!number.match(/\d+/)) {
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;result = <span class="string">"Please enter a valid number"</span>;
+            <br>&nbsp;&nbsp;} <span class="keyword">else if</span> (numberLen > <input type='text' id='condation8'
+                placeholder='...'>) {
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;result = <span class="string">"<input type='text' id='input12'
+                    placeholder='...'>"</span>;
+            <br>&nbsp;&nbsp;} <span class="keyword">else if</span> (numberLen > <input type='text' id='condation7'
+                placeholder='...'>) {
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;result = <span class="string">"<input type='text' id='input9'
+                    placeholder='...'>"</span>;
+            <br>&nbsp;&nbsp;} <span class="keyword">else if</span> (numberLen > <input type='text' id='condation6'
+                placeholder='...'>) {
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;result = <span class="string">"<input type='text' id='input6'
+                    placeholder='...'>"</span>;
+            <br>&nbsp;&nbsp;} <span class="keyword">else if</span> (numberLen > <input type='text' id='condation5'
+                placeholder='...'>) {
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;result = <span class="string">"<input type='text' id='input5'
+                    placeholder='...'>"</span>;
+            <br>&nbsp;&nbsp;} <span class="keyword">else if</span> (numberLen > <input type='text' id='condation4'
+                placeholder='...'>) {
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;result = <span class="string">"<input type='text' id='input4'
+                    placeholder='...'>"</span>;
+            <br>&nbsp;&nbsp;} <span class="keyword">else if</span> (numberLen > <input type='text' id='condation3'
+                placeholder='...'>) {
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;result = <span class="string">"<input type='text' id='input3'
+                    placeholder='...'>"</span>;
+            <br>&nbsp;&nbsp;} <span class="keyword">else if</span> (numberLen > <input type='text' id='condation2'
+                placeholder='...'>) {
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;result = <span class="string">"<input type='text' id='input2'
+                    placeholder='...'>"</span>;
+            <br>&nbsp;&nbsp;} <span class="keyword">else if</span> (numberLen > <input type='text' id='condation1'
+                placeholder='...'>) {
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;result = <span class="string">"<input type='text' id='input1'
+                    placeholder='...'>"</span>;
+            <br>&nbsp;&nbsp;} <span class="keyword">else</span> {
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;result = <span class="string">"<input type='text' id='input0'
+                    placeholder='...'>"</span>;
+            <br>&nbsp;&nbsp;}
+            <br><br>&nbsp;&nbsp;document.getElementById(<span class="string">"result"</span>).innerHTML = result;
+            <br>}
+        </div>
+    </div>
+    <script>
+        function classifyNumber() {
+            let number = document.getElementById("numberInput").value.trim();
+            let numberLen = number.length;
+            let result = "";
+    
+            if (!number.match(/^\d+$/)) {
+                result = "Please enter a valid number";
+            } else {
+                let conditions = [
+                    { limit: document.getElementById('condation8').value, text: document.getElementById('input12').value },
+                    { limit: document.getElementById('condation7').value, text: document.getElementById('input9').value },
+                    { limit: document.getElementById('condation6').value, text: document.getElementById('input6').value },
+                    { limit: document.getElementById('condation5').value, text: document.getElementById('input5').value },
+                    { limit: document.getElementById('condation4').value, text: document.getElementById('input4').value },
+                    { limit: document.getElementById('condation3').value, text: document.getElementById('input3').value },
+                    { limit: document.getElementById('condation2').value, text: document.getElementById('input2').value },
+                    { limit: document.getElementById('condation1').value, text: document.getElementById('input1').value }
+                ];
+    
+                for (let i = 0; i < conditions.length; i++) {
+                    console.log(conditions[i].limit ,conditions[i].text )
+                    if (numberLen > conditions[i].limit) {
+                        result = conditions[i].text;
+                        break;
+                    }
+                }
+    
+                if (!result) {
+                    result = document.getElementById('input0').value;
+                }
+            }
+    
+            document.getElementById("result").innerText = result;
+        }
+    </script>
+    
+</body>
+
+</html>

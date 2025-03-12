@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Classification</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        .upper-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #f4f4f4;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .lower-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #ffffff;
+            border-top: 2px solid #ccc;
+            padding: 20px;
+            width: 100%;
+        }
+
+        input, button {
+            padding: 5px;
+            margin: 5px;
+            font-size: 16px;
+        }
+
+        .code-container {
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: monospace;
+            text-align: left;
+            width: 80%;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="upper-section" id="result">Enter a number below
+        <br>
+        <input type="text" id="numberInput" placeholder="Enter a number">
+        <button onclick="classifyNumber()">Classify</button>
+    </div>
+    <div class="lower-section">
+        <h2>Editable JavaScript Code</h2>
+        <div class="code-container">
+            function classifyNumber() {<br>
+            &nbsp;&nbsp;let number = document.getElementById("numberInput").value.trim();<br>
+            &nbsp;&nbsp;let numberLen = number.length;<br>
+            &nbsp;&nbsp;let result = "";<br><br>
+            &nbsp;&nbsp;if (!number.match(/^\d+$/)) {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;result = "Please enter a valid number";<br>
+            &nbsp;&nbsp;} else if (numberLen > <input type='text' id='input12num' value='12'>) {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;result = "<input type='text' id='input12' value='Very Large Number'>";<br>
+            &nbsp;&nbsp;} else if (numberLen > <input type='text' id='input9num' value='9'>) {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;result = "<input type='text' id='input9' value='Large Number'>";<br>
+            &nbsp;&nbsp;} else if (numberLen > <input type='text' id='input6num' value='6'>) {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;result = "<input type='text' id='input6' value='Medium Number'>";<br>
+            &nbsp;&nbsp;} else if (numberLen > <input type='text' id='input3num' value='3'>) {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;result = "<input type='text' id='input3' value='Small Number'>";<br>
+            &nbsp;&nbsp;} else {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;result = "<input type='text' id='input0' value='Tiny Number'>";<br>
+            &nbsp;&nbsp;}<br>
+            &nbsp;&nbsp;document.getElementById("result").innerHTML = result;<br>
+            }
+        </div>
+    </div>
+    <script>
+        function classifyNumber() {
+            let number = document.getElementById("numberInput").value.trim();
+            let numberLen = number.length;
+            let result = "";
+
+            let thresholds = [
+                { limit: document.getElementById('input12num').value, text: document.getElementById('input12').value },
+                { limit: document.getElementById('input9num').value, text: document.getElementById('input9').value },
+                { limit: document.getElementById('input6num').value, text: document.getElementById('input6').value },
+                { limit: document.getElementById('input3num').value, text: document.getElementById('input3').value },
+                { limit: 0, text: document.getElementById('input0').value }
+            ];
+
+            if (!number.match(/^\d+$/)) {
+                result = "Please enter a valid number";
+            } else {
+                for (let i = 0; i < thresholds.length; i++) {
+                    if (numberLen > thresholds[i].limit) {
+                        result = thresholds[i].text;
+                        break;
+                    }
+                }
+            }
+
+            document.getElementById("result").innerText = result;
+        }
+    </script>
+</body>
+</html>
