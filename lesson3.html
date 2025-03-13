@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiplication Calculator</title>
+    <script src="code-highlighter.js"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            visibility: hidden;
+        }
+
+        h2 {
+            color: #444;
+        }
+
+        .input-group {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .input-group input {
+            flex: 1;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-align: center;
+            outline: none;
+            transition: 0.3s;
+            min-width: 80px;
+        }
+
+        .input-group span {
+            font-size: 18px;
+            font-weight: bold;
+            color: #444;
+        }
+
+
+        .container input {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-align: center;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .container input:focus {
+            border-color: #4CAF50;
+            box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+        }
+
+        .container button {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            color: white;
+            background: #4CAF50;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .container button:hover {
+            background: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        
+        function handleCalculation() {
+            let x = document.getElementById("x").value.trim();
+            let y = document.getElementById("y").value.trim();
+            let z = document.getElementById("z").value.trim();
+
+            x = x ? parseFloat(x) : null;
+            y = y ? parseFloat(y) : null;
+            z = z ? parseFloat(z) : null;
+
+            let result = core(x, y, z);
+
+            if (x === null && y !== null && z !== null) {
+                document.getElementById("x").value = result;
+            } else if (y === null && x !== null && z !== null) {
+                document.getElementById("y").value = result;
+            } else if (z === null && x !== null && y !== null) {
+                document.getElementById("z").value = result;
+            }
+        }
+    </script>
+    <div class="code-container">
+        <code>
+            function core(x, y, z) {
+                if (x && y) {
+                    return x * y;
+                } else if (y && z) {
+                    return z / y;
+                } else if (x && z) {
+                    return z / x;
+                }
+                return null;
+            }
+    
+            document.querySelector(".container").style.visibility = 'visible';
+        </code>
+    </div>
+    <div class="container">
+        <h2>Multiplication Calculator</h2>
+        <div class="input-group">
+            <input type="number" id="x" placeholder="X">
+            <span>×</span>
+            <input type="number" id="y" placeholder="Y">
+            <span>=</span>
+            <input type="number" id="z" placeholder="Z">
+        </div>
+        <button onclick="handleCalculation()">Calculate</button>
+    </div>
+</body>
+
+</html>
