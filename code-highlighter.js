@@ -13,7 +13,11 @@
                 font-family: monospace;
                 white-space: pre-wrap;
                 overflow-x: auto;
+                padding: 20px;
+                width: 50%;
+                height:80%;
             }
+
 
             .code-container-input {
                 padding-right: 5px;
@@ -24,7 +28,6 @@
                 border-radius: 4px;
                 background-color: #333;
                 color: #d4d4d4;
-                
                 transform: translateY(9px); /* Move the textarea down by 5 pixels */
                 display: inline-block;
             }
@@ -52,7 +55,11 @@
             .regex {
                 color: #4ec9b0;
             }
-
+                
+            .comment {
+                color: #6a9955; /* Or any color you prefer for comments */
+                font-style: italic; /* Optional: Make comments italic */
+            }
             .run-button {
                 position: absolute;
                 top: 10px;
@@ -67,6 +74,10 @@
                 font-size: 14px;
                 border-radius: 4px;
                 cursor: pointer;
+            }
+            .error-text {
+                color: red; 
+                font-weight: bold;
             }
         `;
         document.head.appendChild(style);
@@ -85,6 +96,7 @@
         let formattedCode = "";
 
         const patterns = [
+            { regex: /\/\/.*/g, class: "comment" }, // Comment regex MUST be first
             { regex: /\b(function|let|const|if|else|for|while|return|true|false|null|undefined|break|continue)\b/g, class: "keyword" },
             { regex: /("[^"]*"|'[^']*')/g, class: "string" },
             { regex: /\b\d+\b/g, class: "number" },
@@ -168,20 +180,27 @@
         }).replace("Run", "");
 
         try {
+            new Function(code);
             // Remove existing script if it exists
             let existingScript = document.querySelector('#dynamicScript');
             if (existingScript) {
                 existingScript.remove();
             }
 
-            // Create a new script element and append it
+            // Create a new script element
             const script = document.createElement('script');
             script.textContent = code;
             script.id = 'dynamicScript';
+            
+            // Append script to the body
             document.body.appendChild(script);
+            document.querySelector(".code-container").style.visibility = 'visible';
         } catch (error) {
-            console.error("Error executing code:", error);
-            alert("Error executing code. Check console for details.");
+            console.error("Error appending script:", error);
+            // Display error message in the first `.code-container`
+            if (codeContainer) {
+                codeContainer.innerHTML += `<span class="error-text"> ${error.message} </span>`;
+            }
         }
     }
 

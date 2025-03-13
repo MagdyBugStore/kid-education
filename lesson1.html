@@ -16,7 +16,7 @@
             height: 100vh;
             margin: 0;
             padding: 10px;
-            
+
         }
 
         .container {
@@ -90,9 +90,12 @@
             .container {
                 width: 90%;
             }
+
             body {
-                flex-direction: column; /* Stack input and button vertically */
+                flex-direction: column;
+                /* Stack input and button vertically */
             }
+
             .container button {
                 width: 100%;
             }
@@ -101,38 +104,40 @@
 </head>
 
 <body>
+    <script>
+        function validateNumber() {
+            let number = document.getElementById("numberInput").value.trim();
 
+            if (!number.match(/^\d+$/)) {
+                document.getElementById("result").innerText = "Please enter a valid number";
+                return;
+            }
+
+            let result = classifyNumber(number); // Call classifyNumber and get the result
+            document.getElementById("result").innerText = result; // Update the DOM with the result
+        }
+    </script>
     <div class="code-container">
         <code>
-    function classifyNumber() {
-        let number = document.getElementById("numberInput").value.trim();
-        let numberLen = number.length;
-        let result = "";
-        if (!number.match(/^\d+$/)) {
-            result = "Please enter a valid number";
-        } else if (numberLen > [*]) {
-            result = "[*]";
-        } else if (numberLen > [*]) {
-            result = "[*]";
-        }
-        [*] (numberLen > [*]) {
-            result = "[*]";
-        }
-        [*]
-
-        console.log("result")
-
-        document.getElementById("result").innerText = result;
-    }
-    document.querySelector(".container").style.visibility = 'visible';
-    
-</code>
+            function classifyNumber(number) {
+                let numberDigits = number.length;
+                if (numberDigits > [*]) { 
+                    return "[*]";
+                } else if (numberDigits > [*]) {
+                    return "[*]";
+                } [*] (numberDigits > [*]) {
+                    return "[*]";
+                } 
+                [*]
+            }
+            document.querySelector(".container").style.visibility = 'visible';
+        </code>
     </div>
     <div class="container">
         <div id="result">Enter a number below</div>
         <h2>Number Classification</h2>
         <input type="text" id="numberInput" placeholder="Enter a number">
-        <button onclick="classifyNumber()">Classify</button>
+        <button onclick="validateNumber()">Classify</button>
     </div>
 </body>
 
