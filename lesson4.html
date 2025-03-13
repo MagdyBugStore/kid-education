@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rectangle Area Calculator</title>
+    <script src="code-highlighter.js"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            visibility: hidden;
+        }
+
+        .input-group {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .input-group input {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-align: center;
+            width: 80px;
+        }
+
+        button {
+            padding: 12px;
+            font-size: 16px;
+            color: white;
+            background: #4CAF50;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #45a049;
+        }
+
+        canvas .drawing {
+            border: 3px solid #FF5733;
+            background: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="code-container">
+        <code>
+            function calculateArea(length, width) {
+                return length * width;
+            }
+    
+            document.querySelector(".container").style.visibility = 'visible';
+        </code>
+    </div>
+    <div class="container">
+        <h2>Rectangle Area Calculator</h2>
+        <div class="input-group">
+            <input type="number" id="length" placeholder="Length">
+            <input type="number" id="width" placeholder="Width">
+            <button onclick="calculateRectangle()">Calculate</button>
+            <p id="rectangleResult"></p>
+        </div>
+
+        <canvas id="drawing" width="200" height="200"></canvas>
+
+    </div>
+
+    <script>
+
+        function handleCalculation() {
+            let length = parseFloat(document.getElementById("length").value);
+            let width = parseFloat(document.getElementById("width").value);
+
+            if (length && width) {
+                let area = calculateArea(length, width);
+                document.getElementById("rectangleResult").innerText = "Area: " + area;
+                drawRectangle(length, width);
+            }
+        }
+
+        function drawRectangle(length, width) {
+            let canvas = document.getElementById("drawing");
+            let ctx = canvas.getContext("2d");
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.strokeStyle = "#FF5733";
+            ctx.lineWidth = 3;
+
+            let scale = Math.min((canvas.width - 20) / length, (canvas.height - 20) / width);
+            let rectWidth = length * scale;
+            let rectHeight = width * scale;
+
+            let x = (canvas.width - rectWidth) / 2;
+            let y = (canvas.height - rectHeight) / 2;
+
+            ctx.strokeRect(x, y, rectWidth, rectHeight);
+        }
+    </script>
+</body>
+
+</html>
