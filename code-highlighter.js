@@ -132,7 +132,7 @@
         }
         let inputIndex = 0;
         let newFormat = formattedCode
-        codeContainer.innerHTML = newFormat.replaceAll(/\[\[\[\*\*\]\]\]/g, () => {
+        codeContainer.innerHTML = newFormat.replaceAll(/\[\*\]/g, () => {
             const inputHtml = `<textarea class="code-container-input" id="input${inputIndex}" placeholder="..." oninput="window.codeHighlighter.adjustInputWidth(this)"></textarea>`;
             inputIndex++;
             return inputHtml;
