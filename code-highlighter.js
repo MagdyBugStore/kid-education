@@ -157,7 +157,7 @@
     function runCode(codeContainer, code) {
         const inputs = codeContainer.querySelectorAll('.code-container-input');
         let inputIndex = 0;
-        code = code.replaceAll(/\[\[\[\*\*\]\]\]/g, () => {
+        code = code.replaceAll(/\[\*\]/g, () => {
             if (inputs[inputIndex]) {
                 const inputValue = inputs[inputIndex].value;
                 inputIndex++;
